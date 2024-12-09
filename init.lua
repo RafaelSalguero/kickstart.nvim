@@ -272,6 +272,9 @@ require('lazy').setup({
       },
     },
   },
+  {
+    'sindrets/diffview.nvim',
+  },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
