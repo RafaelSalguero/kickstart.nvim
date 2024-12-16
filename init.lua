@@ -234,7 +234,19 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'sindrets/diffview.nvim',
+  {
+    'sindrets/diffview.nvim',
+    config = function()
+      vim.keymap.set('n', '<leader>do', '<cmd>DiffviewOpen<cr>', { desc = '[O]pen git diff view' })
+      vim.keymap.set('n', '<leader>dl', '<cmd>DiffviewFileHistory<cr>', { desc = 'Open git [L]og' })
+    end,
+  },
+  {
+    'esmuellert/nvim-eslint',
+    config = function()
+      require('nvim-eslint').setup {}
+    end,
+  },
   {
     'nvim-tree/nvim-tree.lua',
     version = '*',
