@@ -221,6 +221,12 @@ if not vim.uv.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+-- returns the main branch name either main or master
+local function get_default_branch_name()
+  local res = vim.system({ 'git', 'rev-parse', '--verify', 'main' }, { capture_output = true }):wait()
+  return res.code == 0 and 'main' or 'master'
+end
+
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
@@ -237,7 +243,11 @@ require('lazy').setup({
   {
     'sindrets/diffview.nvim',
     config = function()
-      vim.keymap.set('n', '<leader>do', '<cmd>DiffviewOpen<cr>', { desc = '[O]pen git diff view' })
+      vim.keymap.set('n', '<leader>di', '<cmd>DiffviewOpen<cr>', { desc = 'Open git diff against the [I]ndex' })
+      vim.keymap.set('n', '<leader>dm', function()
+        vim.cmd('DiffviewOpen ' .. get_default_branch_name())
+      end, { desc = 'Open git diff view against [M]ain/master branch' })
+
       vim.keymap.set('n', '<leader>dl', '<cmd>DiffviewFileHistory<cr>', { desc = 'Open git [L]og' })
     end,
   },
