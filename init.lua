@@ -855,7 +855,17 @@ require('lazy').setup({
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+    'catppuccin/nvim',
+    'rebelot/kanagawa.nvim',
+    'rose-pine/neovim',
+    'EdenEast/nightfox.nvim',
+    'navarasu/onedark.nvim',
+    'projekt0n/github-nvim-theme',
+    'Mofiqul/vscode.nvim',
+    'Mofiqul/dracula.nvim',
+    'scottmckendry/cyberdream.nvim',
     'folke/tokyonight.nvim',
+    'tiagovla/tokyodark.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
       -- Load the colorscheme here.
