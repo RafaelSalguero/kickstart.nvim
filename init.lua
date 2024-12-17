@@ -248,6 +248,15 @@ require('lazy').setup({
     end,
   },
   {
+    'mattkubej/jest.nvim',
+    config = function()
+      require('nvim-jest').setup {
+        jest_cmd = 'npx jest',
+        silent = true,
+      }
+    end,
+  },
+  {
     'nvim-tree/nvim-tree.lua',
     version = '*',
     lazy = false,
@@ -412,6 +421,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader>sl', builtin.git_files, { desc = '[S]earch git [L]s-files' })
+      vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = '[S]earch open [B]uffers' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       -- Slightly advanced example of overriding default behavior and theme
