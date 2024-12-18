@@ -315,6 +315,8 @@ require("lazy").setup({
 					},
 				},
 			})
+
+			vim.keymap.set("n", "<leader>nt", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle NvimTree" })
 		end,
 	},
 	{
@@ -934,6 +936,9 @@ require("lazy").setup({
 		"Mofiqul/dracula.nvim",
 		"scottmckendry/cyberdream.nvim",
 		"tiagovla/tokyodark.nvim",
+		"shaunsingh/nord.nvim",
+		"AlexvZyl/nordic.nvim",
+		"neanias/everforest-nvim",
 	},
 	{
 		"folke/tokyonight.nvim",
@@ -1049,7 +1054,7 @@ require("lazy").setup({
 	-- require 'kickstart.plugins.debug',
 	-- require 'kickstart.plugins.indent_line',
 	-- require 'kickstart.plugins.lint',
-	-- require 'kickstart.plugins.autopairs',
+	require("kickstart.plugins.autopairs"),
 	-- require 'kickstart.plugins.neo-tree',
 	-- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
