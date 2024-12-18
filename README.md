@@ -1,92 +1,229 @@
-# rentals-js-neovim-config
+# kickstart.nvim
 
+## Introduction
 
+A starting point for Neovim that is:
 
-## Getting started
+* Small
+* Single-file
+* Completely Documented
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.zgtools.net/zillow/rental-applications/hackweek-projects/rentals-js-neovim-config.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://gitlab.zgtools.net/zillow/rental-applications/hackweek-projects/rentals-js-neovim-config/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+**NOT** a Neovim distribution, but instead a starting point for your configuration.
 
 ## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+### Install Neovim
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+Kickstart.nvim targets *only* the latest
+['stable'](https://github.com/neovim/neovim/releases/tag/stable) and latest
+['nightly'](https://github.com/neovim/neovim/releases/tag/nightly) of Neovim.
+If you are experiencing issues, please make sure you have the latest versions.
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+### Install External Dependencies
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+External Requirements:
+- Basic utils: `git`, `make`, `unzip`, C Compiler (`gcc`)
+- [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
+- Clipboard tool (xclip/xsel/win32yank or other depending on platform)
+- A [Nerd Font](https://www.nerdfonts.com/): optional, provides various icons
+  - if you have it set `vim.g.have_nerd_font` in `init.lua` to true
+- Language Setup:
+  - If want to write Typescript, you need `npm`
+  - If want to write Golang, you will need `go`
+  - etc.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+> **NOTE**
+> See [Install Recipes](#Install-Recipes) for additional Windows and Linux specific notes
+> and quick install snippets
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+### Install Kickstart
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+> **NOTE**
+> [Backup](#FAQ) your previous configuration (if any exists)
 
-## License
-For open source projects, say how it is licensed.
+Neovim's configurations are located under the following paths, depending on your OS:
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+| OS | PATH |
+| :- | :--- |
+| Linux, MacOS | `$XDG_CONFIG_HOME/nvim`, `~/.config/nvim` |
+| Windows (cmd)| `%localappdata%\nvim\` |
+| Windows (powershell)| `$env:LOCALAPPDATA\nvim\` |
+
+#### Recommended Step
+
+[Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) this repo
+so that you have your own copy that you can modify, then install by cloning the
+fork to your machine using one of the commands below, depending on your OS.
+
+> **NOTE**
+> Your fork's url will be something like this:
+> `https://github.com/<your_github_username>/kickstart.nvim.git`
+
+#### Clone kickstart.nvim
+> **NOTE**
+> If following the recommended step above (i.e., forking the repo), replace
+> `nvim-lua` with `<your_github_username>` in the commands below
+
+<details><summary> Linux and Mac </summary>
+
+```sh
+git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+```
+
+</details>
+
+<details><summary> Windows </summary>
+
+If you're using `cmd.exe`:
+
+```
+git clone https://github.com/nvim-lua/kickstart.nvim.git %localappdata%\nvim\
+```
+
+If you're using `powershell.exe`
+
+```
+git clone https://github.com/nvim-lua/kickstart.nvim.git $env:LOCALAPPDATA\nvim\
+```
+
+</details>
+
+### Post Installation
+
+Start Neovim
+
+```sh
+nvim
+```
+
+That's it! Lazy will install all the plugins you have. Use `:Lazy` to view
+current plugin status. Hit `q` to close the window.
+
+Read through the `init.lua` file in your configuration folder for more
+information about extending and exploring Neovim. That also includes
+examples of adding popularly requested plugins.
+
+
+### Getting Started
+
+[The Only Video You Need to Get Started with Neovim](https://youtu.be/m8C0Cq9Uv9o)
+
+### FAQ
+
+* What should I do if I already have a pre-existing neovim configuration?
+  * You should back it up and then delete all associated files.
+  * This includes your existing init.lua and the neovim files in `~/.local`
+    which can be deleted with `rm -rf ~/.local/share/nvim/`
+* Can I keep my existing configuration in parallel to kickstart?
+  * Yes! You can use [NVIM_APPNAME](https://neovim.io/doc/user/starting.html#%24NVIM_APPNAME)`=nvim-NAME`
+    to maintain multiple configurations. For example, you can install the kickstart
+    configuration in `~/.config/nvim-kickstart` and create an alias:
+    ```
+    alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
+    ```
+    When you run Neovim using `nvim-kickstart` alias it will use the alternative
+    config directory and the matching local directory
+    `~/.local/share/nvim-kickstart`. You can apply this approach to any Neovim
+    distribution that you would like to try out.
+* What if I want to "uninstall" this configuration:
+  * See [lazy.nvim uninstall](https://github.com/folke/lazy.nvim#-uninstalling) information
+* Why is the kickstart `init.lua` a single file? Wouldn't it make sense to split it into multiple files?
+  * The main purpose of kickstart is to serve as a teaching tool and a reference
+    configuration that someone can easily use to `git clone` as a basis for their own.
+    As you progress in learning Neovim and Lua, you might consider splitting `init.lua`
+    into smaller parts. A fork of kickstart that does this while maintaining the 
+    same functionality is available here:
+    * [kickstart-modular.nvim](https://github.com/dam9000/kickstart-modular.nvim)
+  * Discussions on this topic can be found here:
+    * [Restructure the configuration](https://github.com/nvim-lua/kickstart.nvim/issues/218)
+    * [Reorganize init.lua into a multi-file setup](https://github.com/nvim-lua/kickstart.nvim/pull/473)
+
+### Install Recipes
+
+Below you can find OS specific install instructions for Neovim and dependencies.
+
+After installing all the dependencies continue with the [Install Kickstart](#Install-Kickstart) step.
+
+#### Windows Installation
+
+<details><summary>Windows with Microsoft C++ Build Tools and CMake</summary>
+Installation may require installing build tools and updating the run command for `telescope-fzf-native`
+
+See `telescope-fzf-native` documentation for [more details](https://github.com/nvim-telescope/telescope-fzf-native.nvim#installation)
+
+This requires:
+
+- Install CMake and the Microsoft C++ Build Tools on Windows
+
+```lua
+{'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+```
+</details>
+<details><summary>Windows with gcc/make using chocolatey</summary>
+Alternatively, one can install gcc and make which don't require changing the config,
+the easiest way is to use choco:
+
+1. install [chocolatey](https://chocolatey.org/install)
+either follow the instructions on the page or use winget,
+run in cmd as **admin**:
+```
+winget install --accept-source-agreements chocolatey.chocolatey
+```
+
+2. install all requirements using choco, exit previous cmd and
+open a new one so that choco path is set, and run in cmd as **admin**:
+```
+choco install -y neovim git ripgrep wget fd unzip gzip mingw make
+```
+</details>
+<details><summary>WSL (Windows Subsystem for Linux)</summary>
+
+```
+wsl --install
+wsl
+sudo add-apt-repository ppa:neovim-ppa/unstable -y
+sudo apt update
+sudo apt install make gcc ripgrep unzip git xclip neovim
+```
+</details>
+
+#### Linux Install
+<details><summary>Ubuntu Install Steps</summary>
+
+```
+sudo add-apt-repository ppa:neovim-ppa/unstable -y
+sudo apt update
+sudo apt install make gcc ripgrep unzip git xclip neovim
+```
+</details>
+<details><summary>Debian Install Steps</summary>
+
+```
+sudo apt update
+sudo apt install make gcc ripgrep unzip git xclip curl
+
+# Now we install nvim
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+sudo rm -rf /opt/nvim-linux64
+sudo mkdir -p /opt/nvim-linux64
+sudo chmod a+rX /opt/nvim-linux64
+sudo tar -C /opt -xzf nvim-linux64.tar.gz
+
+# make it available in /usr/local/bin, distro installs to /usr/bin
+sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/local/bin/
+```
+</details>
+<details><summary>Fedora Install Steps</summary>
+
+```
+sudo dnf install -y gcc make git ripgrep fd-find unzip neovim
+```
+</details>
+
+<details><summary>Arch Install Steps</summary>
+
+```
+sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip neovim
+```
+</details>
+
