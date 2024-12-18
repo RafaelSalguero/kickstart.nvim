@@ -310,6 +310,12 @@ require('lazy').setup({
   {
     'sindrets/diffview.nvim',
   },
+  {
+    'petertriho/nvim-scrollbar',
+    config = function()
+      require('scrollbar').setup {}
+    end,
+  },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
@@ -864,8 +870,10 @@ require('lazy').setup({
     'Mofiqul/vscode.nvim',
     'Mofiqul/dracula.nvim',
     'scottmckendry/cyberdream.nvim',
-    'folke/tokyonight.nvim',
     'tiagovla/tokyodark.nvim',
+  },
+  {
+    'folke/tokyonight.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
       -- Load the colorscheme here.
