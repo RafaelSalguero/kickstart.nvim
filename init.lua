@@ -295,6 +295,23 @@ require('lazy').setup({
       }
     end,
   },
+  {
+    'akinsho/bufferline.nvim',
+    version = '*',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = {
+      options = {
+        offsets = {
+          {
+            filetype = 'NvimTree',
+            text = '',
+            text_align = 'left',
+            separator = false,
+          },
+        },
+      },
+    },
+  },
   'nvim-tree/nvim-web-devicons',
 
   -- NOTE: Plugins can also be added by using a table,
@@ -330,7 +347,6 @@ require('lazy').setup({
       require('scrollbar').setup {}
     end,
   },
-
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
