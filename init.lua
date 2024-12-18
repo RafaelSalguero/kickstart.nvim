@@ -278,6 +278,20 @@ require('lazy').setup({
         update_focused_file = {
           enable = true,
         },
+        git = {
+          enable = true,
+          ignore = false,
+        },
+        filters = {
+          dotfiles = false,
+        },
+        actions = {
+          open_file = {
+            window_picker = {
+              enable = false,
+            },
+          },
+        },
       }
     end,
   },
@@ -488,6 +502,12 @@ require('lazy').setup({
     'pmizio/typescript-tools.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     opts = {},
+  },
+  {
+    'ray-x/lsp_signature.nvim',
+    config = function()
+      require('lsp_signature').setup {}
+    end,
   },
   {
     -- Main LSP Configuration
