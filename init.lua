@@ -172,6 +172,12 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
+-- Resize splits
+vim.keymap.set("n", "<leader>k", ":resize -5<CR>", { desc = "Resize split UP", noremap = true })
+vim.keymap.set("n", "<leader>j", ":resize +5<CR>", { desc = "Resize split DOWN", noremap = true })
+vim.keymap.set("n", "<leader>h", ":vertical resize -5<CR>", { desc = "Resize split LEFT", noremap = true })
+vim.keymap.set("n", "<leader>l", ":vertical resize +5<CR>", { desc = "Resize split RIGHT", noremap = true })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
