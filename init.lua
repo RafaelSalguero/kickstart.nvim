@@ -157,6 +157,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Needed for CSS background colors
+vim.opt.termguicolors = true
+
 -- Tabs
 vim.o.tabstop = 2 -- Insert 4 spaces for a tab
 vim.o.shiftwidth = 2 -- Change the number of space characters inserted for indentation
@@ -801,7 +804,12 @@ require("lazy").setup({
 			},
 		},
 	},
-
+	{
+		"brenoprata10/nvim-highlight-colors",
+		config = function()
+			require("nvim-highlight-colors").setup({})
+		end,
+	},
 	{ -- Autocompletion
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
@@ -845,6 +853,9 @@ require("lazy").setup({
 			luasnip.config.setup({})
 
 			cmp.setup({
+				formatting = {
+					format = require("nvim-highlight-colors").format,
+				},
 				snippet = {
 					expand = function(args)
 						luasnip.lsp_expand(args.body)
