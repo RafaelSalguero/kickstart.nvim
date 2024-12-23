@@ -307,13 +307,6 @@ require("lazy").setup({
 				filters = {
 					dotfiles = false,
 				},
-				actions = {
-					open_file = {
-						window_picker = {
-							enable = false,
-						},
-					},
-				},
 			})
 
 			vim.keymap.set("n", "<leader>nt", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle NvimTree" })
@@ -801,6 +794,7 @@ require("lazy").setup({
 				-- You can use 'stop_after_first' to run the first available formatter from the list
 				javascript = { "prettierd", "prettier", stop_after_first = true },
 				typescript = { "prettierd", "prettier", stop_after_first = true },
+				css = { "prettierd", "prettier", stop_after_first = true },
 			},
 		},
 	},
@@ -1015,6 +1009,7 @@ require("lazy").setup({
 				"query",
 				"vim",
 				"vimdoc",
+				"css",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
