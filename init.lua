@@ -269,6 +269,17 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			local nightfly = require("lualine.themes.nightfly")
+
+			require("lualine").setup({
+				options = { theme = nightfly },
+			})
+		end,
+	},
+	{
 		"sindrets/diffview.nvim",
 		config = function()
 			vim.keymap.set("n", "<leader>di", "<cmd>DiffviewOpen<cr>", { desc = "Open git diff against the [I]ndex" })
