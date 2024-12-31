@@ -259,12 +259,6 @@ require("lazy").setup({
 			require("toggleterm").setup({
 				open_mapping = [[\\]],
 				direction = "horizontal",
-				on_open = function()
-					-- Running this command twice will always result in the file explorer buffer (NvimTree)
-					-- taking up the entire height of the window when opening the terminal.
-					vim.api.nvim_command("NvimTreeToggle")
-					vim.api.nvim_command("NvimTreeToggle")
-				end,
 			})
 		end,
 	},
