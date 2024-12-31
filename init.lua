@@ -248,6 +248,9 @@ end
 --
 -- NOTE: Here is where you install your plugins.
 require("lazy").setup({
+	{
+		"rickhowe/diffchar.vim",
+	},
 	-- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 	{
 		"akinsho/toggleterm.nvim",
@@ -274,6 +277,9 @@ require("lazy").setup({
 			end, { desc = "Open git diff view against [M]ain/master branch" })
 
 			vim.keymap.set("n", "<leader>dl", "<cmd>DiffviewFileHistory<cr>", { desc = "Open git [L]og" })
+			require("diffview").setup({
+				enhanced_diff_hl = true,
+			})
 		end,
 	},
 	{
