@@ -102,7 +102,7 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
@@ -159,6 +159,9 @@ vim.opt.scrolloff = 10
 
 -- Needed for CSS background colors
 vim.opt.termguicolors = true
+
+-- Enable line match
+vim.o.diffopt = "internal,filler,closeoff,linematch:100"
 
 -- Tabs
 vim.o.tabstop = 2 -- Insert 4 spaces for a tab
@@ -813,6 +816,8 @@ require("lazy").setup({
 				-- You can use 'stop_after_first' to run the first available formatter from the list
 				javascript = { "prettierd", "prettier", stop_after_first = true },
 				typescript = { "prettierd", "prettier", stop_after_first = true },
+				typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+				javascriptreact = { "prettierd", "prettier", stop_after_first = true },
 				css = { "prettierd", "prettier", stop_after_first = true },
 			},
 		},
