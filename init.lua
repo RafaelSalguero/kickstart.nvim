@@ -184,6 +184,10 @@ vim.keymap.set("n", "<leader>j", ":resize +5<CR>", { desc = "Resize split DOWN",
 vim.keymap.set("n", "<leader>h", ":vertical resize -5<CR>", { desc = "Resize split LEFT", noremap = true })
 vim.keymap.set("n", "<leader>l", ":vertical resize +5<CR>", { desc = "Resize split RIGHT", noremap = true })
 
+-- Next and previous buffer bindings:
+vim.keymap.set("n", "]b", ":bnext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "[b", ":bprev<CR>", { desc = "Previous buffer" })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -273,6 +277,9 @@ require("lazy").setup({
 
 			require("lualine").setup({
 				options = { theme = nightfly },
+				tabline = {
+					lualine_a = { "buffers" },
+				},
 			})
 		end,
 	},
@@ -328,23 +335,6 @@ require("lazy").setup({
 
 			vim.keymap.set("n", "<leader>nt", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle NvimTree" })
 		end,
-	},
-	{
-		"akinsho/bufferline.nvim",
-		version = "*",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		opts = {
-			options = {
-				offsets = {
-					{
-						filetype = "NvimTree",
-						text = "",
-						text_align = "left",
-						separator = false,
-					},
-				},
-			},
-		},
 	},
 	"nvim-tree/nvim-web-devicons",
 
