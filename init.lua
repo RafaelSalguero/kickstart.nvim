@@ -247,6 +247,22 @@ end
 require("lazy").setup({
 	-- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 	{
+		"akinsho/toggleterm.nvim",
+		version = "*",
+		config = function()
+			require("toggleterm").setup({
+				open_mapping = [[\\]],
+				direction = "horizontal",
+				on_open = function()
+					-- Running this command twice will always result in the file explorer buffer (NvimTree)
+					-- taking up the entire height of the window when opening the terminal.
+					vim.api.nvim_command("NvimTreeToggle")
+					vim.api.nvim_command("NvimTreeToggle")
+				end,
+			})
+		end,
+	},
+	{
 		"sindrets/diffview.nvim",
 		config = function()
 			vim.keymap.set("n", "<leader>di", "<cmd>DiffviewOpen<cr>", { desc = "Open git diff against the [I]ndex" })
