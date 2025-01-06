@@ -541,6 +541,12 @@ require("lazy").setup({
 	},
 	{ "Bilal2453/luvit-meta", lazy = true },
 	{
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup({})
+		end,
+	},
+	{
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
