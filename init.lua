@@ -160,6 +160,9 @@ vim.opt.scrolloff = 10
 -- Needed for CSS background colors
 vim.opt.termguicolors = true
 
+-- Enable line match
+vim.o.diffopt = "internal,filler,closeoff,linematch:100"
+
 -- Tabs
 vim.o.tabstop = 2 -- Insert 4 spaces for a tab
 vim.o.shiftwidth = 2 -- Change the number of space characters inserted for indentation
