@@ -544,6 +544,11 @@ require("lazy").setup({
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
+		config = function()
+			require("typescript-tools").setup()
+			-- add TSToolsAddMissingImports to your keymap
+			vim.keymap.set("n", "<leader>ci", "<cmd>TSToolsAddMissingImports<cr>", { desc = "Add missing imports" })
+		end,
 	},
 	{
 		"ray-x/lsp_signature.nvim",
