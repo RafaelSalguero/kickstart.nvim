@@ -498,6 +498,8 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>sl", builtin.git_files, { desc = "[S]earch git [L]s-files" })
 			vim.keymap.set("n", "<leader>sc", builtin.colorscheme, { desc = "[S]earch [C]olorschemes" })
 			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+			vim.keymap.set("n", "<leader>sb", builtin.current_buffer_fuzzy_find, { desc = "[S]earch [B]uffer" })
+			vim.keymap.set("n", "<leader>ss", builtin.lsp_dynamic_workspace_symbols, { desc = "[S]earch [S]ymbols" })
 
 			-- Slightly advanced example of overriding default behavior and theme
 			vim.keymap.set("n", "<leader>/", function()
