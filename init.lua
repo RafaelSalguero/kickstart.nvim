@@ -541,13 +541,19 @@ require("lazy").setup({
 	},
 	{ "Bilal2453/luvit-meta", lazy = true },
 	{
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup({})
+		end,
+	},
+	{
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
 		config = function()
 			-- add TSToolsAddMissingImports to your keymap
 			require("typescript-tools").setup({})
-			vim.keymap.set("n", "<leader>ci", "<cmd>TSToolsAddMissingImports<cr>", { desc = "Add missing imports" })
+			vim.keymap.set("n", "<leader>ci", "<cmd>TSToolsAddMissingImports<cr>", { desc = "Add missing [I]mports" })
 		end,
 	},
 	{
