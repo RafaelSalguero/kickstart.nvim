@@ -253,6 +253,13 @@ vim.api.nvim_create_user_command("WipeWindowlessBufs", function()
 	end, bufinfos)
 end, { desc = "Wipeout all buffers not shown in a window" })
 
+vim.keymap.set(
+	"n",
+	"<leader>bw",
+	"<cmd>WipeWindowlessBufs<cr>",
+	{ desc = "[W]ipeout all buffers not shown in a window" }
+)
+
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
@@ -411,6 +418,7 @@ require("lazy").setup({
 				{ "<leader>w", group = "[W]orkspace" },
 				{ "<leader>t", group = "[T]oggle" },
 				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+				{ "<leader>b", group = "[B]uffers" },
 			})
 		end,
 	},
@@ -839,6 +847,15 @@ require("lazy").setup({
 		"brenoprata10/nvim-highlight-colors",
 		config = function()
 			require("nvim-highlight-colors").setup({})
+		end,
+	},
+	{
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		config = function()
+			-- Disable virtual_text since it's redundant due to lsp_lines.
+			require("lsp_lines").setup()
+
+			vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
 		end,
 	},
 	{ -- Autocompletion
