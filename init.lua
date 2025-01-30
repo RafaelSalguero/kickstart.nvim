@@ -275,6 +275,9 @@ require("lazy").setup({
 	{
 		"rickhowe/diffchar.vim",
 	},
+	{
+		"wellle/targets.vim",
+	},
 	-- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 	{
 		"akinsho/toggleterm.nvim",
