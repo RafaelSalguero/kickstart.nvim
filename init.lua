@@ -309,6 +309,19 @@ require("lazy").setup({
 			end, { desc = "Open git diff view against [M]ain/master branch" })
 
 			vim.keymap.set("n", "<leader>dl", "<cmd>DiffviewFileHistory<cr>", { desc = "Open git [L]og" })
+			vim.keymap.set("n", "<leader>df", "<cmd>DiffviewFileHistory %<cr>", { desc = "Open git [F]ile history" })
+			vim.keymap.set(
+				"n",
+				"<leader>dv",
+				"<cmd>'<,'>DiffviewFileHistory<cr>",
+				{ desc = "Open git log for [V]isual selection" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>dc",
+				"<cmd>.DiffviewFileHistory<cr>",
+				{ desc = "Open git log the [C]urrent line" }
+			)
 			require("diffview").setup({
 				enhanced_diff_hl = true,
 			})
@@ -671,7 +684,7 @@ require("lazy").setup({
 
 					-- Fuzzy find all the symbols in your current document.
 					--  Symbols are things like variables, functions, types, etc.
-					map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+					map("<leader>cs", require("telescope.builtin").lsp_document_symbols, "Document [S]ymbols")
 
 					-- Fuzzy find all the symbols in your current workspace.
 					--  Similar to document symbols, except searches over your entire project.
