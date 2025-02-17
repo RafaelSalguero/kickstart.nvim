@@ -515,7 +515,6 @@ require("lazy").setup({
 			require("telescope").setup({
 				-- You can put your default mappings / updates / etc. in here
 				--  All the info you're looking for is in `:help telescope.setup()`
-				-- pickers = {}
 				defaults = {
 					file_ignore_patterns = {
 						"node_modules",
@@ -530,6 +529,12 @@ require("lazy").setup({
 				pickers = {
 					colorscheme = {
 						enable_preview = true,
+					},
+					find_files = {
+						hidden = true,
+					},
+					grep_string = {
+						hidden = true,
 					},
 				},
 			})
